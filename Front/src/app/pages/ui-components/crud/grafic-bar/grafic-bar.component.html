@@ -1,0 +1,25 @@
+<div id="chart">
+  <apx-chart
+    #chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions"
+    [yaxis]="chartOptions.yaxis"
+    [xaxis]="chartOptions.xaxis"
+    [fill]="chartOptions.fill"
+    [title]="chartOptions.title">
+  </apx-chart>
+</div>
+<div class="mt-4 text-center">
+
+  <button (click)="generarVideo()">Generar Video</button>
+<button (click)="consultarEstado()" [disabled]="!movieId">
+  Consultar Estado
+</button>
+@if (videoUrl) {
+   <h3>Video generado:</h3>
+  <video [src]="videoUrl" controls width="600"></video>
+}
+</div>
+

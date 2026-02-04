@@ -1,0 +1,30 @@
+<div class="mt-4 text-center" >
+  <p>Generando video, por favor espere...</p>
+
+  <!-- app.component.html -->
+<video #videoPlayer width="600" height="400">
+  <source src="https://ik.imagekit.io/ikmedia/example_video.mp4" type="video/mp4">
+</video>
+
+<div>
+  <button (click)="playPauseVideo()">Play/Pause</button>
+  <button (click)="toggleMute()">Mute/Unmute</button>
+  <!-- Add more custom controls as needed -->
+</div>
+
+</div>
+<!-- End of app.component.html -->
+ <div class="mt-4 text-center">
+  <p>Video de YouTube integrado:</p>
+  <youtube-player class="mt-4 text-center"
+  [videoId]="videoId"
+  suggestedQuality="highres"
+  [height]="400"
+  [width]="600">
+</youtube-player>
+</div>
+<div class="mt-4 text-center">
+  <p>Video generado:</p>
+  
+</div>
+

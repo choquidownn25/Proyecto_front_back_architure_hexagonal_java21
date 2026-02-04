@@ -1,0 +1,375 @@
+/* Fondo oscuro */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+/* Ventana popup */
+.popup {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+
+  width: 300px;
+  max-width: 90%;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+
+  animation: fadeIn 0.25s ease;
+}
+
+/* Botones */
+.popup-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ====== CALENDARIO ====== */
+
+.fc {
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Barra superior */
+.fc-toolbar {
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Botones */
+.fc-button {
+  background: #2563eb !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 12px !important;
+}
+
+.fc-button:hover {
+  background: #1d4ed8 !important;
+}
+
+/* Día actual */
+.fc-day-today {
+  background: #dbeafe !important;
+}
+
+/* Celdas de días */
+.fc-daygrid-day {
+  transition: 0.2s;
+}
+
+.fc-daygrid-day:hover {
+  background: #f1f5f9;
+  cursor: pointer;
+}
+
+/* Eventos */
+.fc-event {
+  background: linear-gradient(45deg, #3b82f6, #2563eb);
+  border: none;
+  border-radius: 6px;
+  padding: 4px;
+  font-size: 13px;
+}
+
+.fc-event:hover {
+  transform: scale(1.05);
+}
+
+/* ====== POPUP ====== */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+}
+
+.popup {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  width: 320px;
+  max-width: 90%;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+
+  animation: fadeIn 0.25s ease;
+}
+
+/* Input */
+.popup input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  outline: none;
+}
+
+.popup input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #bfdbfe;
+}
+
+/* Botones */
+.popup-buttons {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.popup button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+.popup button:last-child {
+  background: #e5e7eb;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { transform: translateY(-15px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+/* Overlay */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+/* Contenedor */
+.popup {
+  background: #ffffff;
+  border-radius: 14px;
+  width: 360px;
+  max-width: 92%;
+
+  box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+  animation: fadeIn 0.25s ease;
+}
+
+/* Header */
+.popup-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.popup-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Body */
+.popup-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #374151;
+}
+
+/* Inputs */
+.popup input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+  outline: none;
+}
+
+.popup input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px #bfdbfe;
+}
+
+/* Time input específico */
+.popup input[type="time"] {
+  appearance: none;
+  background-color: #f9fafb;
+  cursor: pointer;
+}
+
+/* Footer */
+.popup-footer {
+  padding: 14px 20px;
+  border-top: 1px solid #e5e7eb;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Botones */
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* ===== EVENTOS FULLCALENDAR ===== */
+
+/* Contenedor del evento */
+.fc-daygrid-event {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  border: none;
+  border-radius: 8px;
+  min-height: 28px;   /* 👈 clave */
+  padding: 6px 8px;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Hora del evento */
+.fc-event-time {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* Título */
+.fc-event-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hover elegante */
+.fc-daygrid-event:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+/* ===== VISTA SEMANAL ESTILO GOOGLE ===== */
+
+/* Fondo y tipografía */
+.fc {
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Línea del tiempo actual */
+.fc-now-indicator-line {
+  border-color: #ea4335;
+}
+.fc-now-indicator-arrow {
+  border-color: #ea4335;
+}
+
+/* Etiquetas de horas */
+.fc-timegrid-slot-label {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* Rejilla más limpia */
+.fc-timegrid-slot {
+  border-color: #e5e7eb;
+}
+
+/* Eventos como bloques */
+.fc-timegrid-event {
+  border: none;
+  border-radius: 10px;
+  padding: 6px 8px;
+  background: linear-gradient(135deg, #1a73e8, #4285f4);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  color: #fff;
+}
+
+/* Hora del evento */
+.fc-event-time {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Título */
+.fc-event-title {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Hover elegante */
+.fc-timegrid-event:hover {
+  transform: scale(1.02);
+  transition: 0.15s ease;
+  cursor: pointer;
+}

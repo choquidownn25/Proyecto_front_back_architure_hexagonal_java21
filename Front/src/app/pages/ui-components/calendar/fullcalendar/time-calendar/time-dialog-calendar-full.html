@@ -1,0 +1,47 @@
+<h2>Calendario</h2>
+
+<full-calendar #calendar [options]="calendarOptions">
+  
+</full-calendar>
+
+<!-- POPUP -->
+<div *ngIf="showPopup" class="popup-overlay">
+  <div class="popup">
+
+    <!-- HEADER -->
+    <div class="popup-header">
+      <h3>Agregar evento</h3>
+    </div>
+
+    <!-- BODY -->
+    <div class="popup-body">
+
+      <div class="form-group">
+        <label>Título del evento</label>
+        <input
+          type="text"
+          placeholder="Ej: Reunión equipo"
+          [(ngModel)]="eventTitle"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Hora</label>
+        <input
+          type="time"
+          [(ngModel)]="eventTime"
+        />
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="popup-footer">
+      <button class="btn-primary" (click)="saveEvent()">Guardar</button>
+      <button class="btn-secondary" (click)="closePopup()">Cancelar</button>
+    </div>
+
+  </div>
+</div>
+<!-- FIN POPUP -->
+
