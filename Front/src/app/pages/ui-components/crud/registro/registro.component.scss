@@ -1,0 +1,54 @@
+
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.text-danger {
+  color: red;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.divider {
+  border-top: 1px solid #e0e0e0;
+  margin-top: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+.btn-submit {
+  background-color: #1976d2; /* azul */
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #d32f2f; /* rojo */
+  color: white;
+}

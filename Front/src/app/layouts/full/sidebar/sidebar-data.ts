@@ -287,11 +287,15 @@ export const navItems: NavItem[] = [
     iconName: 'clipboard-text',
     route: '/ui-components/forms',
   },
-
   {
     displayName: 'Tables',
     iconName: 'table',
     route: '/ui-components/tables',
+  },
+  {
+    displayName: 'Registro',
+    iconName: 'border-all',
+    route: '/ui-components/registry',
   },
   {
     displayName: 'Expansion Panel',

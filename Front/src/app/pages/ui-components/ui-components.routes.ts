@@ -17,11 +17,10 @@ import { VideoComponent } from './crud/video/video.component';
 
 
 import { AppBlogCardsComponent } from 'src/app/components/blog-card/blog-card.component';
-import { AppFullcalendarComponent } from './calendar/fullcalendar/fullcalendar.component';
-import { provideNativeDateAdapter } from '@angular/material/core';
 import { AppCalendarComponent } from './calendar/calendar-full';
 import { DialogCalendarComponent } from './calendar/dialog-calendar-full';
 import { TimeDialogCalendarComponent } from './calendar/fullcalendar/time-calendar/time-dialog-calendar-full';
+import {RegistroComponent} from "./crud/registro/registro.component";
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -93,6 +92,10 @@ export const UiComponentsRoutes: Routes = [
         path: 'tables',
         component: AppTablesComponent,
       },
+      {
+        path: 'registry',
+        component: RegistroComponent
+      }
     ],
   },
 ];

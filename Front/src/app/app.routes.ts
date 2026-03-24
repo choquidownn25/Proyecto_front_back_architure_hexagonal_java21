@@ -3,6 +3,7 @@ import { BlankComponent } from './layouts/blank/blank.component';
 import { FullComponent } from './layouts/full/full.component';
 import { AppSideLoginComponent } from './pages/authentication/side-login/side-login.component';
 import { AppSideRegisterComponent } from './pages/authentication/side-register/side-register.component';
+import { RegistroComponent } from './pages/ui-components/crud/registro/registro.component';
 
 
 export const routes: Routes = [
@@ -61,7 +62,16 @@ export const routes: Routes = [
       }
     ]
   },
-
+  {
+    path: 'register',
+    component: BlankComponent,
+    children: [
+      {
+        path: '',
+        component: AppSideRegisterComponent
+      }
+    ]
+  },
   // 🔹 Fallback
   {
     path: '**',

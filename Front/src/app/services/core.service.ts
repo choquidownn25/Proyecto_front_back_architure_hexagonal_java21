@@ -7,6 +7,8 @@ import { Producto } from '../models/producto';
 import Swal from 'sweetalert2';
 import { Venta } from '../pages/ui-components/crud/grafico/venta';
 import { CalendarEvent, CalendarEventSend } from '../models/events';
+import { R } from 'node_modules/@fullcalendar/core/internal-common';
+import { RegisterRequest } from '../models/register';
 
 const AUTH_API = 'http://localhost:9096/api/auth/';
 const API_CALENDAR_EVENTS = 'http://localhost:9096/calendar-event';
@@ -17,6 +19,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class CoreService {
+
   private optionsSignal = signal<AppSettings>(defaults);
   baseUrl: string = urls.API_URL_TODOS;
   addUrl: string = urls.API_URL_TODOS_ADD;
@@ -52,6 +55,12 @@ export class CoreService {
       username,
       password
     }, httpOptions);
+
+  }
+   register(registro: RegisterRequest): Observable<any>  {
+    console.log("Ruta : " + AUTH_API + 'signup')
+    return this.httpClient.post(AUTH_API + 'signup', registro, httpOptions);
+
 
   }
 
