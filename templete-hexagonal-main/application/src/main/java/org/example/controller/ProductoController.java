@@ -1,22 +1,33 @@
 package org.example.controller;
 
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.exemple.data.ProductoDto;
 import org.exemple.data.response.ProductoDtoResponse;
+import org.exemple.ports.api.ProductCommandServicePort;
 import org.exemple.ports.api.ProductoServicePort;
+import org.exemple.utils.Reply;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.jspecify.annotations.NonNull;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 @RestController
 @RequestMapping("/producto")
 @CrossOrigin(origins = "*", maxAge = 3600)
+
 public class ProductoController {
     @Autowired
     private ProductoServicePort productoServicePort;
+    @Autowired
+    private ProductCommandServicePort productCommandServicePort;
 
     @PostMapping("/add")
     public ResponseEntity<ProductoDtoResponse> addProducto(@RequestBody ProductoDto productoDto) {
@@ -65,6 +76,16 @@ public class ProductoController {
         productoServicePort.deleteProductoDto(id);
         return ResponseEntity.noContent().build();
     }
-
+    @PostMapping("/kafka/create")
+    public ResponseEntity<?> create(@Valid @RequestBody ProductoDto dto) throws ExecutionException, InterruptedException, TimeoutException {
+        Reply<?> reply = productCommandServicePort.sendCreateAndAwait(dto, Duration.ofSeconds(5));
+        return getResponseEntity(reply);
+    }
+    private static @NonNull ResponseEntity<?> getResponseEntity(Reply<?> reply) {
+        if("SUCCESS".equalsIgnoreCase(reply.status())){
+            return ResponseEntity.ok(reply.data());
+        }
+        return ResponseEntity.badRequest().body(Map.of("error", reply.message()));
+    }
 
 }

@@ -1,0 +1,79 @@
+'# App Properties    821112d0-bfc5-4e8e-8627-8e05c27934bf': ''
+'# The SQL dialect makes Hibernate generate better SQL for the chosen database': ''
+'# spring':
+  datasource:
+    url: >-
+      jdbc:postgresql://localhost:5433/Auths?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
+  jpa:
+    properties:
+      hibernate:
+        'dialect ': org.hibernate.dialect.PostgreSQLDialect
+'#Email': ''
+api:
+  base:
+    'path ': http://localhost:9096
+app:
+  jwt:
+    secret: abcdefghijklmnOPQRSTUVWXYZ
+bezkoder:
+  app:
+    jwtCookieName: bezkoder
+    jwtExpirationMs: '86400000'
+    jwtSecret: bezkoderSecretKey12345678901234567890
+jwt:
+  get:
+    token:
+      uri: /authenticate
+  secret: javainuse
+server:
+  port: '9096'
+spring:
+  aplication:
+    name: auths
+  datasource:
+    password: ''
+    url: >-
+      jdbc:mysql://localhost:3306/Auths?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&serverTimezone=UTC
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: 'true'
+    show-sql: 'true'
+  mail:
+    host: smtp-mail.outlook.com
+    password: 2648bellamama
+    port: '587'
+    properties:
+      mail:
+        protocol: smtp
+        smtp:
+          auth: 'true'
+          ssl:
+            trust: smtp-mail.outlook.com
+          starttls:
+            enable: 'true'
+        tls: 'true'
+    username: mariagloriamamabella2648@outlook.com
+  cloud:
+    stream:
+      bindings:
+        commands-out-0:
+          contentType: application/json
+          destination: products.commands
+        handleReplies-in-0:
+          destination: products.replies
+          contentType: application/json
+          group: kafka-producer
+      Kafka:
+        bindings:
+          handleReplies-in-0:
+            consumer:
+              startOffset: latest
+        binder:
+          brokers: localhost:9092
+    function:
+      definition: handleReplies
