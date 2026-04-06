@@ -1,0 +1,39 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: kafka-consumer21
+  cloud:
+    function:
+      definition: handleCommands
+    stream:
+      bindings:
+        handleCommands-in-0:
+          contentType: application/json
+          destination: products.commands
+          group: products.commands
+          startOffset: latest
+        handleCommands-out-0:
+          contentType: application/json
+          destination: products.replies
+      kafka:
+        binder:
+          brokers: localhost:9092
+  datasource:
+    url: jdbc:mysql://localhost:3306/jwt?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  level:
+    org.springframework: DEBUG
