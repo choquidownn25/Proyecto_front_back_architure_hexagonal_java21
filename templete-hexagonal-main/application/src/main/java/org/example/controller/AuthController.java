@@ -16,6 +16,7 @@ import org.exemple.data.response.JwtResponse;
 import org.exemple.data.response.MessageResponse;
 import org.exemple.data.response.ProductoDtoResponse;
 import org.exemple.data.response.UserDTOResponse;
+import org.exemple.ports.api.CustomerProviderServicePort;
 import org.exemple.ports.api.UserServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -28,11 +29,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -54,6 +51,12 @@ public class AuthController {
     private static final String API_KEY = "XoTtPDM2VxGcbBC5G89eLfaGPqNeJb2dwB1cEIch";
 
     private final RestTemplate restTemplate = new RestTemplate();
+
+    @Autowired
+    CustomerProviderServicePort customerProviderServicePort;
+
+
+
     @PostMapping("/generar")
     public ResponseEntity<String> generarVideo(@RequestBody String payload) {
 
@@ -118,5 +121,13 @@ public class AuthController {
         }
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<?> getCustomerById(@PathVariable Long id) {
+        return customerProviderServicePort.findById(id)
+                .map(customerInfo -> ResponseEntity.ok(customerInfo))
+                .orElse(ResponseEntity.notFound().build());
+        //return ResponseEntity.ok("hola");
     }
 }
