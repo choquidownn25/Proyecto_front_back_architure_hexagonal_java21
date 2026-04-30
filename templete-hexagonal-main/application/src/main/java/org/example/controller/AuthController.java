@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ import org.exemple.data.response.UserDTOResponse;
 import org.exemple.ports.api.CustomerProviderServicePort;
 import org.exemple.ports.api.UserServicePort;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -54,7 +56,8 @@ public class AuthController {
 
     @Autowired
     CustomerProviderServicePort customerProviderServicePort;
-
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
 
     @PostMapping("/generar")
@@ -84,6 +87,12 @@ public class AuthController {
             List<String> roles = userDetails.getAuthorities().stream()
                         .map(item -> item.getAuthority())
                         .collect(Collectors.toList());
+
+        // 🔥 Guardar token en Redis (clave = username)
+        redisTemplate.opsForValue().set(
+                userDetails.getUsername(),
+                token,
+                Duration.ofMillis(jwtUtils.getJwtExpirationMs()));
 
                 return ResponseEntity.ok(new JwtResponse(token,
                         userDetail.getId(),

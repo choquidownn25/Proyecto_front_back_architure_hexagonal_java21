@@ -28,7 +28,7 @@ jwt:
 server:
   port: '9096'
 spring:
-  aplication:
+  application:
     name: auths
   datasource:
     password: ''
@@ -77,3 +77,13 @@ spring:
           brokers: localhost:9092
     function:
       definition: handleReplies
+      # Redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: ''
+    cache:
+        type: redis
+
+

@@ -2,6 +2,8 @@ package org.exemple.data;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 
 @Data
 @AllArgsConstructor
@@ -9,7 +11,7 @@ import lombok.*;
 @Builder
 @ToString
 
-public class ProductoDto {
+public class ProductoDto implements Serializable {
 
     private Integer id;
 
