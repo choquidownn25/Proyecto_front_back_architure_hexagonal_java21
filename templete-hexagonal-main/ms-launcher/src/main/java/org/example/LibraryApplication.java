@@ -1,16 +1,21 @@
 package org.example;
 
 import org.example.adapters.JsonPlaceholderCustomerProviderAdapter;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @ComponentScan({"org.example", "org.exemple"})
 @EnableCaching
+@EnableBatchProcessing
+@EnableScheduling
+
 public class LibraryApplication implements CommandLineRunner {
 
 //	@Autowired

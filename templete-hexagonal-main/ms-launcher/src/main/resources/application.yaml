@@ -25,11 +25,23 @@ jwt:
     token:
       uri: /authenticate
   secret: javainuse
+  # Definición del archivo fuente
+archive_csv:
+  ruta: "./datos/informacion.csv"
+  separador: "," # o ";" dependiendo de cómo esté guardado
+  tiene_cabecera: true
 server:
   port: '9096'
 spring:
   application:
     name: auths
+  main:
+    allow-bean-definition-overriding: true
+
+  batch:
+    job:
+      enable: false
+
   datasource:
     password: ''
     url: >-
@@ -85,5 +97,12 @@ spring:
       password: ''
     cache:
         type: redis
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: debuggeandoideas
+    password: secret
+    virtual-host: /
 
 
