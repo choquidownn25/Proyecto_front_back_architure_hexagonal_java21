@@ -6,13 +6,14 @@
 
 - spring initializr https://start.spring.io/
 - Maven
-- Java 19
+- Java 21
 - Web API 
 - Lombok
 - JPA
 - Struct Map
 - Validation
 - Swagger 2
+- Kafka
 
 
 # Development Tools & Environment
