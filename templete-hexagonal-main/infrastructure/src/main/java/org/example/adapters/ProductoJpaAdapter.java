@@ -8,9 +8,13 @@ import org.exemple.ports.spi.ProductoPersistencePort;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -55,7 +59,12 @@ public class ProductoJpaAdapter implements ProductoPersistencePort {
         return ProductoMapper.INSTANCE.ProductoDtoListToProductoList(listProducts);
 
     }
-
+    @Override
+    @Cacheable(value="ProductDto", key="#page + '-' + #size")
+    public Page<ProductoDto> findAllPage(int page, int size){
+        Pageable pageable = PageRequest.of(page, size);
+        return ProductoMapper.INSTANCE.toPageDTO(productoRepository.findAll(pageable)) ;
+    }
     @Override
     @Cacheable(value="ProductDto", key="#id")
     public ProductoDto getProductoDtoById(Integer id) {
@@ -66,4 +75,6 @@ public class ProductoJpaAdapter implements ProductoPersistencePort {
         }
         return null;
     }
+
+
 }

@@ -10,7 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 @ToString
-
 public class ProductoDto implements Serializable {
 
     private Integer id;

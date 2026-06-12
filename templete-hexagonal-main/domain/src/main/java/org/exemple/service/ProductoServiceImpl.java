@@ -6,6 +6,7 @@ import org.exemple.data.response.ProductoDtoResponse;
 import org.exemple.ports.api.ProductoServicePort;
 import org.exemple.ports.spi.ProductoPersistencePort;
 import org.exemple.utils.StringResponse;
+import org.springframework.data.domain.Page;
 
 
 import java.util.ArrayList;
@@ -92,5 +93,10 @@ public class ProductoServiceImpl implements ProductoServicePort {
         }
         return response;
 
+    }
+
+    @Override
+    public Page<ProductoDto> findAllPage(int page, int size) {
+        return productoPersistencePort.findAllPage(page,size);
     }
 }

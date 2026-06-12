@@ -14,6 +14,7 @@
 - Validation
 - Swagger 2
 - Kafka
+- WebFlux
 
 
 # Development Tools & Environment
